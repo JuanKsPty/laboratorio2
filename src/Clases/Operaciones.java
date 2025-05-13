@@ -11,8 +11,6 @@ public class Operaciones {
         for (int i = 0; i < expr.length(); i++) {
             char c = expr.charAt(i);
 
-            if (c == ' ') continue;
-
             if (esOperando(c)) {
                 salida.push(c);
             } else if (c == '(') {
@@ -21,7 +19,7 @@ public class Operaciones {
                 while (!operadores.isEmpty() && operadores.peek() != '(') {
                     salida.push(operadores.pop());
                 }
-                if (!operadores.isEmpty()) operadores.pop(); // eliminar '('
+                if (!operadores.isEmpty()) operadores.pop();
             } else if (esOperador(c)) {
                 while (!operadores.isEmpty() && prioridad(operadores.peek()) >= prioridad(c)) {
                     salida.push(operadores.pop());
